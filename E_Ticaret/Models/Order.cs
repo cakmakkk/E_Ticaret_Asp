@@ -14,6 +14,8 @@ public partial class Order
     public int? ProductId { get; set; }
 
     public int? CardId { get; set; }
+    public DateTime OrderDate { get; set; }
+
 
     public virtual Card? Card { get; set; }
 
