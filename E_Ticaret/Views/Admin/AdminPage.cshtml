@@ -1,0 +1,832 @@
+﻿@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Extensions;
+@model E_Ticaret.ViewModels.DashboardViewModel
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Admin Paneli</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+          name="viewport" />
+    <link rel="icon"
+          href="@Url.Content("kaiadmin-lite-1.2.0/assets/img/kaiadmin/favicon.ico")
+          type="image/x-icon" />
+
+    <!-- Fonts and icons -->
+    <script src=@Url.Content("kaiadmin-lite-1.2.0/assets/js/plugin/webfont/webfont.min.js")></script>
+    <script>
+        WebFont.load({
+            google: { families: ["Public Sans:300,400,500,600,700"] },
+            custom: {
+                families: [
+                    "Font Awesome 5 Solid",
+                    "Font Awesome 5 Regular",
+                    "Font Awesome 5 Brands",
+                    "simple-line-icons",
+                ],
+                urls: ["kaiadmin-lite-1.2.0/assets/css/fonts.min.css"],
+            },
+            active: function () {
+                sessionStorage.fonts = true;
+            },
+        });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="@Url.Content("kaiadmin-lite-1.2.0/assets/css/bootstrap.min.css") />
+    <link rel="stylesheet" href="@Url.Content("kaiadmin-lite-1.2.0/assets/css/plugins.min.css") />
+    <link rel="stylesheet" href="@Url.Content("kaiadmin-lite-1.2.0/assets/css/kaiadmin.min.css") />
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="assets/css/demo.css" />
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar" data-background-color="dark">
+            <div class="sidebar-logo">
+                <!-- Logo Header -->
+                <div class="logo-header" data-background-color="dark">
+                    <a href="index.html" class="logo">
+                        <img src="assets/img/kaiadmin/logo_light.svg"
+                             alt="navbar brand"
+                             class="navbar-brand"
+                             height="20" />
+                    </a>
+                    <div class="nav-toggle">
+                        <button class="btn btn-toggle toggle-sidebar">
+                            <i class="gg-menu-right"></i>
+                        </button>
+                        <button class="btn btn-toggle sidenav-toggler">
+                            <i class="gg-menu-left"></i>
+                        </button>
+                    </div>
+                    <button class="topbar-toggler more">
+                        <i class="gg-more-vertical-alt"></i>
+                    </button>
+                </div>
+                <!-- End Logo Header -->
+            </div>
+            <div class="sidebar-wrapper scrollbar scrollbar-inner">
+                <div class="sidebar-content">
+                    <ul class="nav nav-secondary">
+                        <li class="nav-item active">
+                            <a data-bs-toggle="collapse"
+                               href="#dashboard"
+                               class="collapsed"
+                               aria-expanded="false">
+                                <i class="fas fa-home"></i>
+                                <p>Link</p>
+                                <span class="caret"></span>
+                            </a>
+                            <div class="collapse" id="dashboard">
+                                <ul class="nav nav-collapse">
+                                    <li>
+                                        <a href="/HomePage/Index">
+                                            <span class="sub-item">Ana Sayfaya Git</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End Sidebar -->
+
+        <div class="main-panel">
+            <div class="main-header">
+                <div class="main-header-logo">
+                    <!-- Logo Header -->
+                    <div class="logo-header" data-background-color="dark">
+                        <a href="index.html" class="logo">
+                            <img src=@Url.Content("~/kaiadmin-lite-1.2.0/assets/img/kaiadmin/logo_light.svg")
+                                 alt="navbar brand"
+                                 class="navbar-brand"
+                                 height="20" />
+                        </a>
+                        <div class="nav-toggle">
+                            <button class="btn btn-toggle toggle-sidebar">
+                                <i class="gg-menu-right"></i>
+                            </button>
+                            <button class="btn btn-toggle sidenav-toggler">
+                                <i class="gg-menu-left"></i>
+                            </button>
+                        </div>
+                        <button class="topbar-toggler more">
+                            <i class="gg-more-vertical-alt"></i>
+                        </button>
+                    </div>
+                    <!-- End Logo Header -->
+                </div>
+                <!-- Navbar Header -->
+                <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+                    <div class="container-fluid">
+                        <div class="container-fluid px-4 mt-3">
+                            <h3 class="fw-bold">Dashboard</h3>
+                        </div>
+                        <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                            <li class="nav-item topbar-user dropdown hidden-caret">
+                                <a class="dropdown-toggle profile-pic"
+                                   data-bs-toggle="dropdown"
+                                   href="#"
+                                   aria-expanded="false">                                   
+                                    <span class="profile-username">
+                                        <span class="op-7">Merhaba,</span>
+                                        <span class="fw-bold">@HttpContextAccessor.HttpContext.Session.GetString("UserName")</span>
+
+                                    </span>
+
+                                </a>                  
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+             
+            <!-- End Navbar -->
+        </div>
+
+        <div class="container">
+            <div class="page-inner">
+                <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+                    
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-icon">
+                                        <div class="icon-big text-center icon-primary bubble-shadow-small">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col col-stats ms-3 ms-sm-0">
+                                        <div class="numbers">
+                                            <p class="card-category">Kullanıcı Sayısı</p>
+                                                <h4 class="card-title">@Model.TotalUsers</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-icon">
+                                        <div class="icon-big text-center icon-info bubble-shadow-small">
+                                            <i class="fas fa-user-check"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col col-stats ms-3 ms-sm-0">
+                                        <div class="numbers">
+                                            <p class="card-category">Admin Sayısı</p>
+                                                <h4 class="card-title">@Model.TotalAdmins</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-icon">
+                                        <div class="icon-big text-center icon-success bubble-shadow-small">
+                                            <i class="fas fa-luggage-cart"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col col-stats ms-3 ms-sm-0">
+                                        <div class="numbers">
+                                            <p class="card-category">Satışlar</p>
+                                                <h4 class="card-title">@Model.TotalSalesAmount ₺</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-icon">
+                                        <div class="icon-big text-center icon-secondary bubble-shadow-small">
+                                            <i class="far fa-check-circle"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col col-stats ms-3 ms-sm-0">
+                                        <div class="numbers">
+                                            <p class="card-category">Sipariş Sayısı</p>
+                                                <h4 class="card-title">@Model.TotalOrders</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card card-round">
+                            <div class="card-body">
+                                <div class="card-head-row card-tools-still-right">
+                                    <div class="card-title">Kullanıcılar</div>
+                                    <div class="card-tools">
+                                        <div class="dropdown">
+                                            <button class="btn btn-icon btn-clean me-0"
+                                                    type="button"
+                                                    id="dropdownMenuButton"
+                                                    data-bs-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                <i class="fas fa-ellipsis-h"></i>
+                                            </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addUserModal">Yeni Kullanıcı Ekle</a>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-list py-4">
+                                        @foreach (var user in Model.Users)
+                                        {
+                                            <div class="item-list">
+                                                <div class="avatar">
+                                                    <span class="avatar-title rounded-circle border border-white @(user.Role == true ? "bg-success" : "bg-secondary")">
+                                                        @user.Name[0]
+                                                    </span>
+                                                </div>
+                                                <div class="info-user ms-3">
+                                                    <div class="username">@user.Name @user.Surname</div>
+                                                    <div class="status">@user.Email</div>
+                                                </div>
+                                                <button type="button"
+                                                        class="btn btn-icon btn-link btn-primary op-8 me-1"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#editUserModal"
+                                                        onclick="populateUserModal('@user.UserId', '@user.Name', '@user.Surname', '@user.Email', '@user.Password', '@user.Phone', @user.Role.ToString().ToLower())">
+                                                    <i class="far fa-edit"></i>
+                                                </button>
+
+                                                <a href="/User/Delete/@user.UserId" class="btn btn-icon btn-link btn-danger op-8">
+                                                    <i class="fas fa-ban"></i>
+                                                </a>
+
+                                            </div>
+                                        }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card card-round">
+                            <div class="card-header">
+                                <div class="card-head-row card-tools-still-right">
+                                    <div class="card-title">Ürünler</div>
+                                    <div class="card-tools">
+                                        <div class="dropdown">
+                                            <button class="btn btn-icon btn-clean me-0"
+                                                    type="button"
+                                                    id="dropdownMenuButton"
+                                                    data-bs-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                <i class="fas fa-ellipsis-h"></i>
+                                            </button>
+                                            <div class="dropdown-menu"
+                                                 aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addProductModal">Yeni Ürün Ekle</a>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <!-- Projects table -->
+                                    <table class="table align-items-center mb-0">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col">Fotoğraf</th>
+                                                    <th scope="col">Ürün Adı</th>
+                                                    <th scope="col" class="text-end">Fiyat</th>
+                                                    <th scope="col" class="text-end">Açıklama</th>
+                                                    <th scope="col" class="text-end">Kategori</th>
+                                                    <th scope="col" class="text-end">İşlem</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var product in Model.Products)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <img src="@product.Image" width="50" height="50" style="border-radius: 5px;" />
+                                                        </td>
+                                                        <td>@product.ProductName</td>
+                                                        <td class="text-end">@product.Price₺</td>
+                                                        <td class="text-end">@product.Description</td>
+                                                        <td class="text-end">@product.Category?.CategoryName</td>
+                                                        <td class="text-end">
+                                                            <button class="btn btn-sm btn-primary"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#editProductModal"
+                                                                    onclick="populateProductModal('@product.ProductId', '@product.ProductName', '@product.Description', '@product.Price', '@product.Image', '@product.CategoryId')">
+                                                                Düzenle
+                                                            </button>
+                                                            <a href="/Product/Delete/@product.ProductId" class="btn btn-sm btn-danger">Sil</a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+
+                                               
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+        <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="post" action="/Product/Create">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addProductModalLabel">Yeni Ürün Ekle</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label>Ürün Adı</label>
+                                <input type="text" name="ProductName" class="form-control" required />
+                            </div>
+                            <div class="mb-3">
+                                <label>Açıklama</label>
+                                <textarea name="Description" class="form-control"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label>Fiyat</label>
+                                <input type="number" name="Price" step="0.01" class="form-control" required />
+                            </div>
+                            <div class="mb-3">
+                                <label>Resim Linki</label>
+                                <input type="text" name="Image" class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Kategori</label>
+                                <select name="CategoryId" class="form-control" required>
+                                    <option value="" disabled selected>Kategori seçin</option>
+                                    @foreach (var kategori in ViewBag.Categories as List<SelectListItem>)
+                                    {
+                                        <option value="@kategori.Value">@kategori.Text</option>
+                                    }
+                                </select>
+
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="post" action="/Product/Edit">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editProductModalLabel">Ürünü Düzenle</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" name="ProductId" id="editProductId" />
+                            <div class="mb-3">
+                                <label>Ürün Adı</label>
+                                <input type="text" name="ProductName" class="form-control" id="editProductName" required />
+                            </div>
+                            <div class="mb-3">
+                                <label>Açıklama</label>
+                                <textarea name="Description" class="form-control" id="editDescription"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label>Fiyat</label>
+                                <input type="number" name="Price" step="0.01" class="form-control" id="editPrice" required />
+                            </div>
+                            <div class="mb-3">
+                                <label>Resim Linki</label>
+                                <input type="text" name="Image" class="form-control" id="editImage" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Kategori</label>
+                                <select name="CategoryId" class="form-control" id="editCategoryId" required>
+                                    @foreach (var kategori in ViewBag.Categories as List<SelectListItem>)
+                                    {
+                                        <option value="@kategori.Value">@kategori.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Güncelle</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="post" action="/User/Edit">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editUserModalLabel">Kullanıcıyı Düzenle</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" name="UserId" id="editUserId" />
+
+                            <div class="mb-3">
+                                <label>Ad</label>
+                                <input type="text" name="Name" class="form-control" id="editName" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Soyad</label>
+                                <input type="text" name="Surname" class="form-control" id="editSurname" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Email</label>
+                                <input type="email" name="Email" class="form-control" id="editEmail" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Şifre</label>
+                                <input type="text" name="Password" class="form-control" id="editPassword" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Telefon</label>
+                                <input type="text" name="Phone" class="form-control" id="editPhone" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Rol (Admin için işaretli)</label>
+                                <input type="hidden" name="Role" value="false" />
+                                <input type="checkbox" name="Role" id="editRole" />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kullanıcı Ekle Modal -->
+        <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="post" action="/User/Create">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Yeni Kullanıcı Ekle</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label>Ad</label>
+                                <input name="Name" class="form-control" required />
+                            </div>
+                            <div class="mb-3">
+                                <label>Soyad</label>
+                                <input name="Surname" class="form-control" required />
+                            </div>
+                            <div class="mb-3">
+                                <label>Email</label>
+                                <input name="Email" class="form-control" required />
+                            </div>
+                            <div class="mb-3">
+                                <label>Telefon</label>
+                                <input name="Phone" class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Şifre</label>
+                                <input name="Password" type="password" class="form-control" required />
+                            </div>
+                            <div class="mb-3">
+                                <label>Rol</label>
+                                <select name="Role" class="form-control">
+                                    <option value="false">Kullanıcı</option>
+                                    <option value="true">Admin</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+    <!-- Custom template | don't include it in your project! -->
+    <div class="custom-template">
+        <div class="title">Settings</div>
+        <div class="custom-content">
+            <div class="switcher">
+                <div class="switch-block">
+                    <h4>Logo Header</h4>
+                    <div class="btnSwitch">
+                        <button type="button"
+                                class="selected changeLogoHeaderColor"
+                                data-color="dark"></button>
+                        <button type="button"
+                                class="changeLogoHeaderColor"
+                                data-color="blue"></button>
+                        <button type="button"
+                                class="changeLogoHeaderColor"
+                                data-color="purple"></button>
+                        <button type="button"
+                                class="changeLogoHeaderColor"
+                                data-color="light-blue"></button>
+                        <button type="button"
+                                class="changeLogoHeaderColor"
+                                data-color="green"></button>
+                        <button type="button"
+                                class="changeLogoHeaderColor"
+                                data-color="orange"></button>
+                        <button type="button"
+                                class="changeLogoHeaderColor"
+                                data-color="red"></button>
+                        <button type="button"
+                                class="changeLogoHeaderColor"
+                                data-color="white"></button>
+                        <br />
+                        <button type="button"
+                                class="changeLogoHeaderColor"
+                                data-color="dark2"></button>
+                        <button type="button"
+                                class="changeLogoHeaderColor"
+                                data-color="blue2"></button>
+                        <button type="button"
+                                class="changeLogoHeaderColor"
+                                data-color="purple2"></button>
+                        <button type="button"
+                                class="changeLogoHeaderColor"
+                                data-color="light-blue2"></button>
+                        <button type="button"
+                                class="changeLogoHeaderColor"
+                                data-color="green2"></button>
+                        <button type="button"
+                                class="changeLogoHeaderColor"
+                                data-color="orange2"></button>
+                        <button type="button"
+                                class="changeLogoHeaderColor"
+                                data-color="red2"></button>
+                    </div>
+                </div>
+                <div class="switch-block">
+                    <h4>Navbar Header</h4>
+                    <div class="btnSwitch">
+                        <button type="button"
+                                class="changeTopBarColor"
+                                data-color="dark"></button>
+                        <button type="button"
+                                class="changeTopBarColor"
+                                data-color="blue"></button>
+                        <button type="button"
+                                class="changeTopBarColor"
+                                data-color="purple"></button>
+                        <button type="button"
+                                class="changeTopBarColor"
+                                data-color="light-blue"></button>
+                        <button type="button"
+                                class="changeTopBarColor"
+                                data-color="green"></button>
+                        <button type="button"
+                                class="changeTopBarColor"
+                                data-color="orange"></button>
+                        <button type="button"
+                                class="changeTopBarColor"
+                                data-color="red"></button>
+                        <button type="button"
+                                class="selected changeTopBarColor"
+                                data-color="white"></button>
+                        <br />
+                        <button type="button"
+                                class="changeTopBarColor"
+                                data-color="dark2"></button>
+                        <button type="button"
+                                class="changeTopBarColor"
+                                data-color="blue2"></button>
+                        <button type="button"
+                                class="changeTopBarColor"
+                                data-color="purple2"></button>
+                        <button type="button"
+                                class="changeTopBarColor"
+                                data-color="light-blue2"></button>
+                        <button type="button"
+                                class="changeTopBarColor"
+                                data-color="green2"></button>
+                        <button type="button"
+                                class="changeTopBarColor"
+                                data-color="orange2"></button>
+                        <button type="button"
+                                class="changeTopBarColor"
+                                data-color="red2"></button>
+                    </div>
+                </div>
+                <div class="switch-block">
+                    <h4>Sidebar</h4>
+                    <div class="btnSwitch">
+                        <button type="button"
+                                class="changeSideBarColor"
+                                data-color="white"></button>
+                        <button type="button"
+                                class="selected changeSideBarColor"
+                                data-color="dark"></button>
+                        <button type="button"
+                                class="changeSideBarColor"
+                                data-color="dark2"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="custom-toggle">
+            <i class="icon-settings"></i>
+        </div>
+    </div>
+    <!-- End Custom template -->
+    </div>
+
+    <script>
+        function populateProductModal(id, name, desc, price, image, categoryId) {
+            document.getElementById("editProductId").value = id;
+            document.getElementById("editProductName").value = name;
+            document.getElementById("editDescription").value = desc;
+            document.getElementById("editPrice").value = price;
+            document.getElementById("editImage").value = image;
+            document.getElementById("editCategoryId").value = categoryId;
+        }
+    </script>
+
+    <script>
+        function populateUserModal(userId, name, surname, email, password, phone, role) {
+            document.getElementById('editUserId').value = userId;
+            document.getElementById('editName').value = name;
+            document.getElementById('editSurname').value = surname;
+            document.getElementById('editEmail').value = email;
+            document.getElementById('editPassword').value = password;
+            document.getElementById('editPhone').value = phone;
+            document.getElementById('editRole').checked = role === 'true';
+        }
+    </script>
+
+    <!--   Core JS Files   -->
+    <script src=@Url.Content("kaiadmin-lite-1.2.0/assets/js/core/jquery-3.7.1.min.js")></script>
+    <script src=@Url.Content("kaiadmin-lite-1.2.0/assets/js/core/popper.min.js")></script>
+    <script src=@Url.Content("kaiadmin-lite-1.2.0/assets/js/core/bootstrap.min.js")></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src=@Url.Content("kaiadmin-lite-1.2.0/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js")></script>
+
+    <!-- Chart JS -->
+    <script src=@Url.Content("kaiadmin-lite-1.2.0/assets/js/plugin/chart.js/chart.min.js")></script>
+
+    <!-- jQuery Sparkline -->
+    <script src=@Url.Content("kaiadmin-lite-1.2.0/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js")></script>
+
+    <!-- Chart Circle -->
+    <script src=@Url.Content("kaiadmin-lite-1.2.0/assets/js/plugin/chart-circle/circles.min.js")></script>
+
+    <!-- Datatables -->
+    <script src=@Url.Content("kaiadmin-lite-1.2.0/assets/js/plugin/datatables/datatables.min.js")></script>
+
+    <!-- Bootstrap Notify -->
+    <script src=@Url.Content("kaiadmin-lite-1.2.0/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js")></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src=@Url.Content("kaiadmin-lite-1.2.0/assets/js/plugin/jsvectormap/jsvectormap.min.js")></script>
+    <script src=@Url.Content("kaiadmin-lite-1.2.0/assets/js/plugin/jsvectormap/world.js")></script>
+
+    <!-- Sweet Alert -->
+    <script src=@Url.Content("kaiadmin-lite-1.2.0/assets/js/plugin/sweetalert/sweetalert.min.js")></script>
+
+    <!-- Kaiadmin JS -->
+    <script src=@Url.Content("kaiadmin-lite-1.2.0/assets/js/kaiadmin.min.js")></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src=@Url.Content("kaiadmin-lite-1.2.0/assets/js/setting-demo.js")></script>
+    <script src=@Url.Content("kaiadmin-lite-1.2.0/assets/js/demo.js")></script>
+    <script>
+        $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
+            type: "line",
+            height: "70",
+            width: "100%",
+            lineWidth: "2",
+            lineColor: "#177dff",
+            fillColor: "rgba(23, 125, 255, 0.14)",
+        });
+
+        $("#lineChart2").sparkline([99, 125, 122, 105, 110, 124, 115], {
+            type: "line",
+            height: "70",
+            width: "100%",
+            lineWidth: "2",
+            lineColor: "#f3545d",
+            fillColor: "rgba(243, 84, 93, .14)",
+        });
+
+        $("#lineChart3").sparkline([105, 103, 123, 100, 95, 105, 115], {
+            type: "line",
+            height: "70",
+            width: "100%",
+            lineWidth: "2",
+            lineColor: "#ffa534",
+            fillColor: "rgba(255, 165, 52, .14)",
+        });
+    </script>
+	<link href="~/kaiadmin-lite-1.2.0/assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="~/kaiadmin-lite-1.2.0/assets/css/demo.css" rel="stylesheet" />
+	<a href="~/kaiadmin-lite-1.2.0/assets/css/demo.css.map"></a>
+	<link href="~/kaiadmin-lite-1.2.0/assets/css/fonts.css" rel="stylesheet" />
+	<link href="~/kaiadmin-lite-1.2.0/assets/css/fonts.min.css" rel="stylesheet" />
+	<link href="~/kaiadmin-lite-1.2.0/assets/css/kaiadmin.css" rel="stylesheet" />
+	<link href="~/kaiadmin-lite-1.2.0/assets/css/kaiadmin.min.css" rel="stylesheet" />
+	<a href="~/kaiadmin-lite-1.2.0/assets/css/kaiadmin.css.map"></a>
+	<link href="~/kaiadmin-lite-1.2.0/assets/css/plugins.css" rel="stylesheet" />
+	<link href="~/kaiadmin-lite-1.2.0/assets/css/plugins.min.css" rel="stylesheet" />
+	<a href="~/kaiadmin-lite-1.2.0/assets/css/plugins.css.map"></a>
+
+    <script src="/kaiadmin-lite-1.2.0/assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="/kaiadmin-lite-1.2.0/assets/js/core/popper.min.js"></script>
+    <script src="/kaiadmin-lite-1.2.0/assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="/kaiadmin-lite-1.2.0/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <!-- Kaiadmin JS -->
+    <script src="/kaiadmin-lite-1.2.0/assets/js/kaiadmin.min.js"></script>
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="/kaiadmin-lite-1.2.0/assets/js/setting-demo2.js"></script>
+    <script>
+        $("#displayNotif").on("click", function () {
+            var placementFrom = $("#notify_placement_from option:selected").val();
+            var placementAlign = $("#notify_placement_align option:selected").val();
+            var state = $("#notify_state option:selected").val();
+            var style = $("#notify_style option:selected").val();
+            var content = {};
+
+            content.message =
+                'Turning standard Bootstrap alerts into "notify" like notifications';
+            content.title = "Bootstrap notify";
+            if (style == "withicon") {
+                content.icon = "fa fa-bell";
+            } else {
+                content.icon = "none";
+            }
+            content.url = "index.html";
+            content.target = "_blank";
+
+            $.notify(content, {
+                type: state,
+                placement: {
+                    from: placementFrom,
+                    align: placementAlign,
+                },
+                time: 1000,
+            });
+        });</script>
+
+ 
+
+
+
+</body>
+</html>

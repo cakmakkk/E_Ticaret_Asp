@@ -1,0 +1,152 @@
+﻿@model List<E_Ticaret.Models.Product>
+
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Untree.co" />
+    <link rel="shortcut icon" href="@Url.Content("~/furni-1.0.0.0/images/favicon.png")" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap5" />
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="@Url.Content("~/furni-1.0.0.0/css/bootstrap.min.css")" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="@Url.Content("~/furni-1.0.0.0/css/tiny-slider.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/furni-1.0.0.0/css/style.css")" />
+
+    <title>Furni - Interior Design Website</title>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
+        <div class="container">
+            <a class="navbar-brand" href="#">Furni<span>.</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsFurni">
+                <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+                    <li class="nav-item active"><a class="nav-link" href="/HomePage/Index">Ana Sayfa</a></li>
+                    <li><a class="nav-link" href="/Shop/Shop">Alışveriş</a></li>
+                </ul>
+
+                <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+                    <li><a class="nav-link" href="/User/Logout"><img src="@Url.Content("~/furni-1.0.0.0/images/user.svg")" /></a></li>
+                    <li><a class="nav-link" href="/Cart/Cart"><img src="@Url.Content("~/furni-1.0.0.0/images/cart.svg")" /></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-5">
+                    <div class="intro-excerpt">
+                        <h1>Modern <span class="d-block"> İç Tasarım Dizaynı</span></h1>
+                        <p class="mb-4">Furni ile keşfe çıkın !</p>
+                        <p>
+                            <a href="/Cart/Cart" class="btn btn-secondary me-2">Sepete Git</a>
+                            <a href="/Shop/Shop" class="btn btn-white-outline">Keşfet</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="hero-img-wrap">
+                        <img src="@Url.Content("~/furni-1.0.0.0/images/couch.png")" class="img-fluid" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Section -->
+    <div class="product-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
+                    <h2 class="mb-4 section-title">Mükemmel malzemelerle hazırlandı.</h2>
+                    <p class="mb-4">
+                        Hayallerinizdeki Evi Keşfedin!
+
+                        Tarzınıza ve ihtiyacınıza uygun, birbirinden şık ve kaliteli mobilyalar tek tıkla kapınızda! Geniş ürün yelpazemizle oturma odasından yatak odasına, yemek alanından çalışma köşesine kadar evinizin her köşesini güzelleştirin. 
+                    </p>
+                    <p><a href="/Shop/Shop" class="btn">Keşfet</a></p>
+                </div>
+
+
+                @*todo : @Url.Content($"~/furni-1.0.0.0/images/product-{i}.png") --> direkt db'den çekilecek şekilde ayarladım beyler*@
+                @foreach(var item in Model)
+                {
+                    <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+                        <a class="product-item" href="/Cart/AddToCart/@item.ProductId">
+                            <img src="@item.Image" class="img-fluid product-thumbnail" />
+                            <h3 class="product-title">@item.ProductName</h3>
+                            <strong class="product-price">@item.Price TL</strong>
+                            <span class="icon-cross">
+                                <img src="@Url.Content("~/furni-1.0.0.0/images/cross.svg")" class="img-fluid" />
+                            </span>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="why-choose-section">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-6">
+                    <h2 class="section-title">Neden Bizi Seçmelisiniz</h2>
+                    <div class="row my-5">
+                        @{
+                            var icons = new[] { "truck", "bag", "support", "return" };
+                            var titles = new[] { "Hızlı ve Ücretsiz Kargo", "Alışverişi Kolay", "24/7 Destek", "Sorunsuz İade" };
+                            for (int i = 0; i < 4; i++)
+                            {
+                                <div class="col-6 col-md-6">
+                                    <div class="feature">
+                                        <div class="icon">
+                                            <img src="@Url.Content($"~/furni-1.0.0.0/images/{icons[i]}.svg")" class="img-fluid" />
+                                        </div>
+                                        <h3>@titles[i]</h3>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="img-wrap">
+                        <img src="@Url.Content("~/furni-1.0.0.0/images/why-choose-us-img.jpg")" class="img-fluid" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container relative">
+            <div class="sofa-img">
+                <img src="@Url.Content("~/furni-1.0.0.0/images/sofa.png")" class="img-fluid" />
+            </div
+    </footer>
+
+    <!-- JS Files -->
+    <script src="@Url.Content("~/furni-1.0.0.0/js/bootstrap.bundle.min.js")"></script>
+    <script src="@Url.Content("~/furni-1.0.0.0/js/tiny-slider.js")"></script>
+    <script src="@Url.Content("~/furni-1.0.0.0/js/custom.js")"></script>
+
+</body>
+</html>

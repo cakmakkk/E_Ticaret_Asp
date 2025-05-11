@@ -1,0 +1,155 @@
+﻿@model List<E_Ticaret.Models.Card>
+@{
+	Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Untree.co">
+	<link rel="shortcut icon" href="favicon.png">
+	<link href="~/furni-1.0.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+	<link href="~/furni-1.0.0.0/css/tiny-slider.css" rel="stylesheet">
+	<link href="~/furni-1.0.0.0/css/style.css" rel="stylesheet">
+	<title>Furni</title>
+</head>
+
+<body>
+	<nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+		<div class="container">
+			<a class="navbar-brand" href="/HomePage/Index">Furni<span>.</span></a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarsFurni">
+				<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+					<li class="nav-item active"><a class="nav-link" href="/HomePage/Index">Ana Sayfa</a></li>
+					<li><a class="nav-link" href="/Shop/Shop">Alışveriş</a></li>
+				</ul>
+				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+					<li><a class="nav-link" href="/User/Logout"><img src="/furni-1.0.0.0/images/user.svg"></a></li>
+					<li><a class="nav-link" href="/Cart/Cart"><img src="/furni-1.0.0.0/images/cart.svg"></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="hero">
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col-lg-5">
+					<div class="intro-excerpt">
+						<h1>Sepet</h1>
+					</div>
+				</div>
+				<div class="col-lg-7">
+					<div class="hero-img-wrap">
+						<img src="@Url.Content("~/furni-1.0.0.0/images/couch.png")" class="img-fluid" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<br />
+	<br />
+	<br />
+
+	<div class="untree_co-section before-footer-section">
+		<div class="container">
+			<div class="row mb-5">
+				<form class="col-md-12" method="post">
+					<div class="site-blocks-table">
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="product-thumbnail">Resim</th>
+									<th class="product-name">Ürün</th>
+									<th class="product-price">Fiyat</th>
+									<th class="product-quantity">Adet</th>
+									<th class="product-total">Toplam</th>
+									<th class="product-remove">Sil</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td class="product-thumbnail">
+											<img src="@item.Product.Image" alt="Image" class="img-fluid">
+										</td>
+										<td class="product-name">
+											<h2 class="h5 text-black">@item.Product.ProductName</h2>
+										</td>
+										<td>@item.Product.Price TL</td>
+										<td>@item.Quantity</td>
+										@{
+											decimal urunToplam = Convert.ToDecimal(item.Quantity) * Convert.ToDecimal(item.Product.Price);
+										}
+										<td>@urunToplam TL</td>
+										<td><a href="/Cart/Delete/@item.CardId" class="btn btn-black btn-sm">X</a></td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+					<div class="row mb-5">
+						<div class="col-md-6">
+							<a href="/Shop/Shop" class="btn btn-black btn-sm">Alışverişe Devam Et</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 pl-5">
+					<div class="row justify-content-end">
+						<div class="col-md-7">
+							<div class="row">
+								<div class="col-md-12 text-right border-bottom mb-5">
+									<h3 class="text-black h4 text-uppercase">Sepet Toplamı</h3>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-md-6">
+									<strong class="text-black">Toplam ödenecek miktar:</strong>
+								</div>
+								<div class="col-md-6 text-right">
+									@{
+										var total = Model.Sum(item =>
+										Convert.ToDecimal(item.Quantity) * Convert.ToDecimal(item.Product.Price));
+									}
+									<p><strong class="text-black">@total TL</strong></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<a class="btn btn-black btn-lg py-3 btn-block" asp-controller="Checkout" asp-action="Checkout">
+										Sipariş Ver
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer-section">
+		<div class="container relative">
+			<div class="sofa-img">
+				<img src="/furni-1.0.0.0/images/sofa.png" alt="Image" class="img-fluid">
+			</div>
+		</div>
+	</footer>
+
+	<script src="~/furni-1.0.0.0/js/bootstrap.bundle.min.js"></script>
+	<script src="~/furni-1.0.0.0/js/tiny-slider.js"></script>
+	<script src="~/furni-1.0.0.0/js/custom.js"></script>
+</body>
+</html>

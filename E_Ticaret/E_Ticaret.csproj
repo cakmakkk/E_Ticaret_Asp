@@ -1,0 +1,74 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="appsettings.Development.json" />
+    <Content Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\furni-1.0.0.0\about.html" />
+    <None Include="wwwroot\furni-1.0.0.0\blog.html" />
+    <None Include="wwwroot\furni-1.0.0.0\cart.html" />
+    <None Include="wwwroot\furni-1.0.0.0\checkout.html" />
+    <None Include="wwwroot\furni-1.0.0.0\contact.html" />
+    <None Include="wwwroot\furni-1.0.0.0\css\bootstrap.min.css" />
+    <None Include="wwwroot\furni-1.0.0.0\css\style.css" />
+    <None Include="wwwroot\furni-1.0.0.0\css\tiny-slider.css" />
+    <None Include="wwwroot\furni-1.0.0.0\favicon.png" />
+    <None Include="wwwroot\furni-1.0.0.0\images\bag.svg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\bowl-2.png" />
+    <None Include="wwwroot\furni-1.0.0.0\images\bowl-3.png" />
+    <None Include="wwwroot\furni-1.0.0.0\images\cart.svg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\couch.png" />
+    <None Include="wwwroot\furni-1.0.0.0\images\cross.svg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\dots-green.svg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\dots-light.svg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\dots-yellow.svg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\envelope-outline.svg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\img-grid-1.jpg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\img-grid-2.jpg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\img-grid-3.jpg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\person-1.jpg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\person-1.png" />
+    <None Include="wwwroot\furni-1.0.0.0\images\person_1.jpg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\person_2.jpg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\person_3.jpg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\person_4.jpg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\post-1.jpg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\post-2.jpg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\post-3.jpg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\product-1.png" />
+    <None Include="wwwroot\furni-1.0.0.0\images\product-2.png" />
+    <None Include="wwwroot\furni-1.0.0.0\images\product-3.png" />
+    <None Include="wwwroot\furni-1.0.0.0\images\return.svg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\sofa.png" />
+    <None Include="wwwroot\furni-1.0.0.0\images\support.svg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\truck.svg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\user.svg" />
+    <None Include="wwwroot\furni-1.0.0.0\images\why-choose-us-img.jpg" />
+    <None Include="wwwroot\furni-1.0.0.0\index.html" />
+    <None Include="wwwroot\furni-1.0.0.0\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\furni-1.0.0.0\js\custom.js" />
+    <None Include="wwwroot\furni-1.0.0.0\js\tiny-slider.js" />
+    <None Include="wwwroot\furni-1.0.0.0\README.txt" />
+    <None Include="wwwroot\furni-1.0.0.0\scss\style.scss" />
+    <None Include="wwwroot\furni-1.0.0.0\services.html" />
+    <None Include="wwwroot\furni-1.0.0.0\shop.html" />
+    <None Include="wwwroot\furni-1.0.0.0\thankyou.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
